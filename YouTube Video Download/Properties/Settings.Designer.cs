@@ -25,7 +25,7 @@ namespace YouTubeVideoDownload.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("%default%")]
         public string downloadPath {
             get {
                 return ((string)(this["downloadPath"]));

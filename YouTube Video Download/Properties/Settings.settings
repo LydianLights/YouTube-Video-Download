@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="downloadPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\</Value>
+      <Value Profile="(Default)">%default%</Value>
     </Setting>
   </Settings>
 </SettingsFile>

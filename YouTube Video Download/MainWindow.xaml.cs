@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using Microsoft.WindowsAPICodePack.Dialogs;
 using YouTubeVideoDownload.Services;
 
 namespace YouTubeVideoDownload
@@ -68,6 +69,44 @@ namespace YouTubeVideoDownload
             GridView view = (GridView)listViewVideoList.View;
             view.Columns[1].Width = progressBarWidth;
             view.Columns[0].Width = (titleColumnWidth > 0) ? titleColumnWidth : 0;
+        }
+
+
+        // Set the initial download path text to the default setting
+        private void textBoxDownloadPath_Loaded(object sender, RoutedEventArgs e)
+        {
+            string path = Properties.Settings.Default.downloadPath;
+            if (path == "%default%")
+            {
+                path = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos) + @"\YouTube Downloads";
+            }
+
+            textBoxDownloadPath.Text = path;
+        }
+
+        private void textBoxDownloadPath_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            Properties.Settings.Default.downloadPath = textBoxDownloadPath.Text;
+            Properties.Settings.Default.Save();
+        }
+
+        private void buttonDownloadPathBrowse_Click(object sender, RoutedEventArgs e)
+        {
+            string path = Properties.Settings.Default.downloadPath;
+
+            // Initialize folder dialog
+            var dlg = new CommonOpenFileDialog();
+            dlg.IsFolderPicker = true;
+            dlg.InitialDirectory = path;
+
+            // Show dialog
+            if (dlg.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                path = dlg.FileName;
+
+                textBoxDownloadPath.Text = path;
+                Properties.Settings.Default.downloadPath = path;
+            }
         }
     }
 }

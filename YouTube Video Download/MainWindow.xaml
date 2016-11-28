@@ -31,7 +31,8 @@
             <TabItem Header="Settings">
                 <Grid Background="#FFE5E5E5">
                     <Label Content="Download Path:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="textBoxDownloadPath" Margin="103,14,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <TextBox x:Name="textBoxDownloadPath" Margin="103,14,90,0" TextWrapping="Wrap" VerticalAlignment="Top" Loaded="textBoxDownloadPath_Loaded" LostKeyboardFocus="textBoxDownloadPath_LostKeyboardFocus"/>
+                    <Button x:Name="buttonDownloadPathBrowse" Content="Browse..." HorizontalAlignment="Right" Margin="0,13,10,0" VerticalAlignment="Top" Width="75" Click="buttonDownloadPathBrowse_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>
