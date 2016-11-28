@@ -5,10 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YouTubeVideoDownload"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <TextBox x:Name="textBoxVideoURL" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Video URL" VerticalAlignment="Top" Width="384"/>
-        <Button x:Name="buttonGetVideo" Content="Get!" HorizontalAlignment="Left" Margin="420,8,0,0" VerticalAlignment="Top" Width="87" Click="buttonGetVideo_Click"/>
-
+        Title="YouTube Video Downloader" Height="392.858" Width="1006.251" WindowStartupLocation="Manual">
+    <Grid Margin="0,0,2,0">
+        <TabControl x:Name="tabControl" Margin="10,35,10,10">
+            <TabItem Header="Download">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="textBoxURL" Margin="10" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <Button x:Name="buttonAddVideos" Content="Add!" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="buttonClearVideoList" Content="Clear" HorizontalAlignment="Left" Margin="90,33,0,0" VerticalAlignment="Top" Width="75"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Settings">
+                <Grid Background="#FFE5E5E5">
+                    <Label Content="Download Path:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="textBoxDownloadPath" Margin="103,14,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="buttonStartDownload" Content="Start!" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="buttonPauseDownload" Content="Pause..." HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="buttonStopDownload" Content="Stop" HorizontalAlignment="Left" Margin="170,10,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>

@@ -30,7 +30,7 @@ namespace YouTubeVideoDownload
 
         private void buttonGetVideo_Click(object sender, RoutedEventArgs e)
         {
-            VideoDownloader.SaveVideoToDisk(textBoxVideoURL.Text);
+
         }
     }
 }
