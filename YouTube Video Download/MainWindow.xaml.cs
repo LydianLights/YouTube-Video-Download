@@ -13,7 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace YouTube_Video_Download
+using YouTubeVideoDownload.Services;
+
+namespace YouTubeVideoDownload
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,6 +25,12 @@ namespace YouTube_Video_Download
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+
+        private void buttonGetVideo_Click(object sender, RoutedEventArgs e)
+        {
+            VideoDownloader.SaveVideoToDisk(textBoxVideoURL.Text);
         }
     }
 }

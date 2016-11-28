@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace YouTube_Video_Download
+namespace YouTubeVideoDownload
 {
     /// <summary>
     /// Interaction logic for App.xaml
