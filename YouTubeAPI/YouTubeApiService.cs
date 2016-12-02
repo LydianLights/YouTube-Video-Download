@@ -66,7 +66,7 @@ namespace YouTubeApi
         // Returns null if all IDs are invalid, else returns all valid ID requests
         public static YouTubeVideo[] GetVideos(string[] videoIDs)
         {
-            const int maxVideosPerRequest = 49;
+            const int maxVideosPerRequest = 50;
 
             YouTubeVideo[] returnedVideos;
 

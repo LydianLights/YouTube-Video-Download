@@ -50,8 +50,8 @@ namespace YouTubeVideoDownload
 
         private void buttonAddVideos_Click(object sender, RoutedEventArgs e)
         {
-            string playlist = null;
-            var test = YouTubeApiService.GetVideo(playlist);
+            string playlist = "FLJIb47qeeqA1Yw7ppL8hNYw";
+            var test = YouTubeApiService.GetPlaylist(playlist);
         }
 
         private void buttonClearVideoList_Click(object sender, RoutedEventArgs e)
