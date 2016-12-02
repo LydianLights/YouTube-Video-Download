@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YouTube Video Download", "YouTube Video Download\YouTube Video Download.csproj", "{66F4134C-3FD4-4129-9777-C48D0EEAB4B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YouTubeAPI", "YouTubeAPI\YouTubeAPI.csproj", "{BF6989AB-0F94-46B6-BDBE-2E49C827FEF3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YouTubeApi", "YouTubeAPI\YouTubeApi.csproj", "{BF6989AB-0F94-46B6-BDBE-2E49C827FEF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

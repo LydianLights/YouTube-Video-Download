@@ -15,7 +15,7 @@ using Google.Apis.YouTube.v3.Data;
 
 namespace YouTubeApi
 {
-    public class YouTubeApiService
+    public static class YouTubeApiService
     {
         // Authenticates and creates a service to connect with the YouTube API
         private static YouTubeService ytService = Authenticate();

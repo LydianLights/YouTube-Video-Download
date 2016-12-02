@@ -7,8 +7,8 @@
     <ProjectGuid>{BF6989AB-0F94-46B6-BDBE-2E49C827FEF3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>YouTubeAPI</RootNamespace>
-    <AssemblyName>YouTubeAPI</AssemblyName>
+    <RootNamespace>YouTubeApi</RootNamespace>
+    <AssemblyName>YouTubeApi</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -80,6 +80,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LinkParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="YouTubeApiService.cs" />
     <Compile Include="YouTubeVideo.cs" />

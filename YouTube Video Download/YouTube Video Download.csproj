@@ -131,9 +131,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\YouTubeAPI\YouTubeAPI.csproj">
+    <ProjectReference Include="..\YouTubeAPI\YouTubeApi.csproj">
       <Project>{bf6989ab-0f94-46b6-bdbe-2e49c827fef3}</Project>
-      <Name>YouTubeAPI</Name>
+      <Name>YouTubeApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -25,12 +25,5 @@ namespace YouTubeApi
             Description = description;
             PublishedDate = publishedDate;
         }
-
-        // Gets data from YouTube and creates a video object
-        // Return null if video not found
-        public static YouTubeVideo GetVideoFromYouTube(string id)
-        {
-            return YouTubeApiService.GetVideo(id);
-        }
     }
 }
