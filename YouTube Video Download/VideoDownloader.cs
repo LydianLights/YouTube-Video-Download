@@ -7,7 +7,7 @@ using System.IO;
 
 using VideoLibrary;
 
-namespace YouTubeVideoDownload.Services
+namespace YouTubeVideoDownload
 {
     class VideoDownloader
     {

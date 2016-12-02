@@ -13,7 +13,7 @@
                     <TextBox x:Name="textBoxURL" Margin="10" TextWrapping="Wrap" VerticalAlignment="Top"/>
                     <Button x:Name="buttonAddVideos" Content="Add!" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Width="75" Click="buttonAddVideos_Click"/>
                     <Button x:Name="buttonClearVideoList" Content="Clear" HorizontalAlignment="Left" Margin="90,33,0,0" VerticalAlignment="Top" Width="75" Click="buttonClearVideoList_Click"/>
-                    <ListView x:Name="listViewVideoList" Margin="10,58,10,10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalContentAlignment="Center" Padding="1,0,0,0" UseLayoutRounding="False" SizeChanged="listViewVideoList_SizeChanged" IsEnabled="True">
+                    <ListView x:Name="listViewVideoList" Margin="10,58,10,10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalContentAlignment="Center" Padding="0" UseLayoutRounding="False" SizeChanged="listViewVideoList_SizeChanged" IsEnabled="True">
                         <ListView.View>
                             <GridView AllowsColumnReorder="False">
                                 <GridView.ColumnHeaderContainerStyle>

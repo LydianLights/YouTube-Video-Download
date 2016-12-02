@@ -14,7 +14,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using Microsoft.WindowsAPICodePack.Dialogs;
-using YouTubeVideoDownload.Services;
 
 namespace YouTubeVideoDownload
 {
@@ -49,7 +48,7 @@ namespace YouTubeVideoDownload
 
         private void buttonAddVideos_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void buttonClearVideoList_Click(object sender, RoutedEventArgs e)
