@@ -50,7 +50,19 @@ namespace YouTubeVideoDownload
 
         private void buttonAddVideos_Click(object sender, RoutedEventArgs e)
         {
-            labelTestURLParse.Content = LinkParser.GetVideoIDFromURL(textBoxURL.Text);
+            // Parse input text for video ID
+            string videoID = LinkParser.GetVideoIDFromURL(textBoxURL.Text);
+
+            // If valid video ID, get video info
+            YouTubeVideo video = null;
+
+            if (videoID != null)
+            {
+                video = YouTubeApiService.GetVideo(videoID);
+            }
+
+            // DEBUG: Show the ID result
+            labelTestURLParse.Content = video != null ? video.Title : "Failed to parse link!";
         }
 
         private void buttonClearVideoList_Click(object sender, RoutedEventArgs e)

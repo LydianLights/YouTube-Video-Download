@@ -37,7 +37,7 @@ namespace YouTubeApi
 
             // Invalid url
             catch{ }
-            return "Fail";
+            return null;
         }
 
         public static string GetPlaylistIDFromURL(string url)
