@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using YouTubeApi;
+
 using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace YouTubeVideoDownload
@@ -48,7 +50,8 @@ namespace YouTubeVideoDownload
 
         private void buttonAddVideos_Click(object sender, RoutedEventArgs e)
         {
-            
+            string playlist = null;
+            var test = YouTubeApiService.GetVideo(playlist);
         }
 
         private void buttonClearVideoList_Click(object sender, RoutedEventArgs e)

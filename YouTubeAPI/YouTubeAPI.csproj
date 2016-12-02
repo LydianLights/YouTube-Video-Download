@@ -81,7 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="YouTubeApi.cs" />
+    <Compile Include="YouTubeApiService.cs" />
     <Compile Include="YouTubeVideo.cs" />
   </ItemGroup>
   <ItemGroup>

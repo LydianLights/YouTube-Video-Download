@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace YouTubeApi
 {
-    class YouTubeVideo
+    public class YouTubeVideo
     {
         public string ID { get; set; }
         public string Title { get; set; }
@@ -30,7 +30,7 @@ namespace YouTubeApi
         // Return null if video not found
         public static YouTubeVideo GetVideoFromYouTube(string id)
         {
-            return YouTubeApi.GetVideo(id);
+            return YouTubeApiService.GetVideo(id);
         }
     }
 }
