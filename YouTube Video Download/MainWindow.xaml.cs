@@ -61,33 +61,42 @@ namespace YouTubeVideoDownload
 
 
         #region Video List
+        // Checks URL text box for a video or playlist link and adds the videos to the queue
         private void buttonAddVideos_Click(object sender, RoutedEventArgs e)
         {
-            // Parse input text for video ID
             string videoID = LinkParser.GetVideoIDFromURL(textBoxURL.Text);
+            string playlistID = LinkParser.GetPlaylistIDFromURL(textBoxURL.Text);
 
-            // If valid video ID, get video info
-            YouTubeVideo video = null;
-
-            if (videoID != null)
+            // Check which IDs were found
+            if (videoID != null && playlistID != null)
             {
-                video = YouTubeApiService.GetVideo(videoID);
-                var videoListEntry = new VideoListEntry(video);
-                VideoList.Add(videoListEntry);
+                labelUrlStatus.Content = $"video | {videoID} | playlist | {playlistID}";
             }
-
-            // DEBUG: Show the ID result
-            labelUrlStatus.Content = video != null ? video.Title : "Failed to parse link!";
+            else if (videoID != null)
+            {
+                labelUrlStatus.Content = $"video | {videoID}";
+            }
+            else if (playlistID != null)
+            {
+                labelUrlStatus.Content = $"playlist | {playlistID}";
+            }
+            else
+            {
+                labelUrlStatus.Content = "Invalid link!";
+            }
         }
 
+        // Clears all videos from the list
         private void buttonClearVideoList_Click(object sender, RoutedEventArgs e)
         {
             VideoList.Clear();
+            labelUrlStatus.Content = "List cleared!";
         }
 
+        // Clear the status label when user types into the text box
         private void textBoxURL_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            labelUrlStatus.Content = "";
         }
         #endregion
 
