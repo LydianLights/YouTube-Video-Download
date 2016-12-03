@@ -64,21 +64,47 @@ namespace YouTubeVideoDownload
         // Checks URL text box for a video or playlist link and adds the videos to the queue
         private void buttonAddVideos_Click(object sender, RoutedEventArgs e)
         {
+            labelUrlStatus.Content = "Loading...";
+            labelUrlStatus.Refresh();
+
             string videoID = LinkParser.GetVideoIDFromURL(textBoxURL.Text);
             string playlistID = LinkParser.GetPlaylistIDFromURL(textBoxURL.Text);
 
             // Check which IDs were found
             if (videoID != null && playlistID != null)
             {
-                labelUrlStatus.Content = $"video | {videoID} | playlist | {playlistID}";
+                // Ask if user would like to load the attached playlist
+                var result = MessageBox.Show(
+                    "This link contains a playlist. Would you like to load the playlist?",
+                    "Playlist Detected",
+                    MessageBoxButton.YesNo);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    // Loads playlist instead of video
+                    videoID = null;
+                }
             }
-            else if (videoID != null)
+            if (videoID != null)
             {
-                labelUrlStatus.Content = $"video | {videoID}";
+                // Get video and add to list
+                var video = YouTubeApiService.GetVideo(videoID);
+                var videoListEntry = new VideoListEntry(video);
+                VideoList.Add(videoListEntry);
+
+                labelUrlStatus.Content = $"\"{video.Title}\" successfully added!";
             }
             else if (playlistID != null)
             {
-                labelUrlStatus.Content = $"playlist | {playlistID}";
+                // Get playlist and add all videos to list
+                var videos = YouTubeApiService.GetPlaylist(playlistID);
+                foreach (var video in videos)
+                {
+                    var videoListEntry = new VideoListEntry(video);
+                    VideoList.Add(videoListEntry);
+                }
+
+                labelUrlStatus.Content = $"Playlist successfully added!";
             }
             else
             {

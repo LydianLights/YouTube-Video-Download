@@ -87,6 +87,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ExtentionMethods.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="VideoDownloader.cs" />
     <Compile Include="Data\VideoListEntry.cs" />

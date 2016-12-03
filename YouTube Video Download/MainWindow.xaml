@@ -11,7 +11,7 @@
         <TabControl x:Name="tabControl" Margin="10,35,10,10">
             <TabItem Header="Download">
                 <Grid Background="#FFE5E5E5">
-                    <TextBox x:Name="textBoxURL" Margin="10" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="textBoxURL_TextChanged"/>
+                    <TextBox x:Name="textBoxURL" Margin="75,9,10,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="textBoxURL_TextChanged"/>
                     <Button x:Name="buttonAddVideos" Content="Add!" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Width="75" Click="buttonAddVideos_Click" IsDefault="True"/>
                     <Button x:Name="buttonClearVideoList" Content="Clear" HorizontalAlignment="Left" Margin="90,33,0,0" VerticalAlignment="Top" Width="75" Click="buttonClearVideoList_Click"/>
                     <ListView x:Name="listViewVideoList" Margin="10,58,10,10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalContentAlignment="Center" Padding="0" UseLayoutRounding="False" SizeChanged="listViewVideoList_SizeChanged" IsEnabled="True" Loaded="listViewVideoList_Loaded">
@@ -28,6 +28,7 @@
                         </ListView.View>
                     </ListView>
                     <Label x:Name="labelUrlStatus" Content="" Margin="170,30,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Label Content="Paste URL:" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Settings">
