@@ -5,15 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YouTubeVideoDownload"
         mc:Ignorable="d"
-        Title="YouTube Video Downloader" Height="400" Width="1000" WindowStartupLocation="Manual" MinWidth="425" MinHeight="300">
+        Title="YouTube Video Downloader" Height="400" Width="1000" WindowStartupLocation="Manual" MinWidth="425" MinHeight="300"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid Margin="0,0,2,0">
         <TabControl x:Name="tabControl" Margin="10,35,10,10">
             <TabItem Header="Download">
                 <Grid Background="#FFE5E5E5">
-                    <TextBox x:Name="textBoxURL" Margin="10" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <TextBox x:Name="textBoxURL" Margin="10" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="textBoxURL_TextChanged"/>
                     <Button x:Name="buttonAddVideos" Content="Add!" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Width="75" Click="buttonAddVideos_Click" IsDefault="True"/>
                     <Button x:Name="buttonClearVideoList" Content="Clear" HorizontalAlignment="Left" Margin="90,33,0,0" VerticalAlignment="Top" Width="75" Click="buttonClearVideoList_Click"/>
-                    <ListView x:Name="listViewVideoList" Margin="10,58,10,10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalContentAlignment="Center" Padding="0" UseLayoutRounding="False" SizeChanged="listViewVideoList_SizeChanged" IsEnabled="True">
+                    <ListView x:Name="listViewVideoList" Margin="10,58,10,10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalContentAlignment="Center" Padding="0" UseLayoutRounding="False" SizeChanged="listViewVideoList_SizeChanged" IsEnabled="True" Loaded="listViewVideoList_Loaded">
                         <ListView.View>
                             <GridView AllowsColumnReorder="False">
                                 <GridView.ColumnHeaderContainerStyle>
@@ -21,12 +22,12 @@
                                         <Setter Property="IsHitTestVisible" Value="False"/>
                                     </Style>
                                 </GridView.ColumnHeaderContainerStyle>
-                                <GridViewColumn Header="Video Title"/>
-                                <GridViewColumn Header="Progress" Width="100"/>
+                                <GridViewColumn Header="Video Title" DisplayMemberBinding="{Binding Title}"/>
+                                <GridViewColumn Header="Progress" Width="100" DisplayMemberBinding="{Binding ProgressText}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <Label x:Name="labelTestURLParse" Content="" Margin="170,30,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Label x:Name="labelUrlStatus" Content="" Margin="170,30,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Settings">

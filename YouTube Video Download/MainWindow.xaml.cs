@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using YouTubeApi;
+using YouTubeVideoDownload.Data;
 
 using Microsoft.WindowsAPICodePack.Dialogs;
 
@@ -24,13 +26,23 @@ namespace YouTubeVideoDownload
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ObservableCollection<VideoListEntry> VideoList;
+
+        #region Initialization
         public MainWindow()
         {
+            VideoList = new ObservableCollection<VideoListEntry>();
             InitializeComponent();
         }
 
+        private void listViewVideoList_Loaded(object sender, RoutedEventArgs e)
+        {
+            listViewVideoList.ItemsSource = VideoList;
+        }
+        #endregion
 
 
+        #region Download Buttons
         private void buttonStartDownload_Click(object sender, RoutedEventArgs e)
         {
 
@@ -45,9 +57,10 @@ namespace YouTubeVideoDownload
         {
 
         }
+        #endregion
 
 
-
+        #region Video List
         private void buttonAddVideos_Click(object sender, RoutedEventArgs e)
         {
             // Parse input text for video ID
@@ -59,18 +72,27 @@ namespace YouTubeVideoDownload
             if (videoID != null)
             {
                 video = YouTubeApiService.GetVideo(videoID);
+                var videoListEntry = new VideoListEntry(video);
+                VideoList.Add(videoListEntry);
             }
 
             // DEBUG: Show the ID result
-            labelTestURLParse.Content = video != null ? video.Title : "Failed to parse link!";
+            labelUrlStatus.Content = video != null ? video.Title : "Failed to parse link!";
         }
 
         private void buttonClearVideoList_Click(object sender, RoutedEventArgs e)
         {
-
+            VideoList.Clear();
         }
 
+        private void textBoxURL_TextChanged(object sender, TextChangedEventArgs e)
+        {
 
+        }
+        #endregion
+
+
+        #region Layout Management
         // Resize the video list headers when the list is resized
         // Columns[0] = Video Title
         // Columns[1] = Progress
@@ -83,8 +105,10 @@ namespace YouTubeVideoDownload
             view.Columns[1].Width = progressBarWidth;
             view.Columns[0].Width = (titleColumnWidth > 0) ? titleColumnWidth : 0;
         }
+        #endregion
 
 
+        #region Download Path
         // Set the initial download path text to the default setting
         private void textBoxDownloadPath_Loaded(object sender, RoutedEventArgs e)
         {
@@ -121,5 +145,6 @@ namespace YouTubeVideoDownload
                 Properties.Settings.Default.downloadPath = path;
             }
         }
+        #endregion
     }
 }

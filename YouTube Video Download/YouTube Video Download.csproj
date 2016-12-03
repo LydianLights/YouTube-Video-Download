@@ -89,6 +89,7 @@
     </ApplicationDefinition>
     <Compile Include="Settings.cs" />
     <Compile Include="VideoDownloader.cs" />
+    <Compile Include="Data\VideoListEntry.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -9,7 +9,7 @@ using VideoLibrary;
 
 namespace YouTubeVideoDownload
 {
-    class VideoDownloader
+    public class VideoDownloader
     {
         public static void SaveVideoToDisk(string videoURL)
         {
