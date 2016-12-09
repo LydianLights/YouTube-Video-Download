@@ -11,13 +11,23 @@ namespace YouTubeVideoDownload
 {
     public class VideoDownloader
     {
-        public static void SaveVideoToDisk(string videoURL)
+        public static void SaveVideoToDisk(string videoID)
         {
-            var test = Properties.Settings.Default.downloadPath;
+            string savePath = Properties.Settings.Default.downloadPath;
+
+            string videoURL = $"https://www.youtube.com/watch?v={videoID}";
+            string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string relativePath = @"YouTubeVideoDownloader\~temp";
+            string downloadPath = Path.Combine(appData, relativePath);
+
             var youTube = YouTube.Default;
             var video = youTube.GetVideo(videoURL);
             var bytes = video.GetBytes();
-            //File.WriteAllBytes($@"B:\{video.FullName}", bytes);
+
+            Directory.CreateDirectory(downloadPath);
+            File.WriteAllBytes(Path.Combine(downloadPath, video.FullName), bytes);
+
+            File.Move(Path.Combine(downloadPath, video.FullName), Path.Combine(savePath, video.FullName));
         }
     }
 }
