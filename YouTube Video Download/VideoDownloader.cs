@@ -9,9 +9,10 @@ using VideoLibrary;
 
 namespace YouTubeVideoDownload
 {
-    public class VideoDownloader
+    public static class VideoDownloader
     {
-        public static void SaveVideoToDisk(string videoID)
+        // TODO: Remove save path from this method and pass it in instead
+        private static async Task _SaveVideoToDiskAsync(string videoID)
         {
             string savePath = Properties.Settings.Default.downloadPath;
 
@@ -21,13 +22,28 @@ namespace YouTubeVideoDownload
             string downloadPath = Path.Combine(appData, relativePath);
 
             var youTube = YouTube.Default;
-            var video = youTube.GetVideo(videoURL);
-            var bytes = video.GetBytes();
+            var video = await youTube.GetVideoAsync(videoURL);
+            var bytes = await video.GetBytesAsync();
 
             Directory.CreateDirectory(downloadPath);
             File.WriteAllBytes(Path.Combine(downloadPath, video.FullName), bytes);
 
             File.Move(Path.Combine(downloadPath, video.FullName), Path.Combine(savePath, video.FullName));
+        }
+
+        // Saves the YouTube video specified by the provided video ID to disk at the path set by the user
+        public static async void SaveVideoToDiskAsync(string videoID)
+        {
+            await _SaveVideoToDiskAsync(videoID);
+        }
+
+        // Saves the YouTube videos specified by the provided video IDs to disk at the path set by the user
+        public static async void SaveVideosToDiskAsync(string[] videoIDs)
+        {
+            foreach (var videoID in videoIDs)
+            {
+                await _SaveVideoToDiskAsync(videoID);
+            }
         }
     }
 }

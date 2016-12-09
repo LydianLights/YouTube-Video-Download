@@ -51,7 +51,9 @@ namespace YouTubeVideoDownload
                 labelUrlStatus.Refresh();
                 VideoList[0].SetProgress(ProgressToken.Downloading);
 
-                VideoDownloader.SaveVideoToDisk(VideoList[0].Video.ID);
+                VideoDownloader.SaveVideoToDiskAsync(VideoList[0].Video.ID);
+
+                labelUrlStatus.Content = "Done!";
             }
             else
             {
