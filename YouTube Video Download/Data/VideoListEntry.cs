@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace YouTubeVideoDownload.Data
         Error
     }
 
-    public class VideoListEntry
+    public class VideoListEntry : INotifyPropertyChanged
     {
         // Title and ProgressText are bound to the ListView displying the videos
         public string Title { get; }
@@ -33,6 +34,15 @@ namespace YouTubeVideoDownload.Data
             Video = video;
             Title = video.Title;
             SetProgress(ProgressToken.Ready);
+        }
+
+        // Raised when a property is changed
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        // Call this whenever a property is changed to fire the PropertyChanged event
+        private void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            PropertyChanged?.Invoke(this, e);
         }
 
         // Sets the displayed progress of the entry
@@ -74,6 +84,8 @@ namespace YouTubeVideoDownload.Data
                     ProgressText = "";
                     break;
             }
+
+            OnPropertyChanged(new PropertyChangedEventArgs("ProgressText"));
         }
     }
 }

@@ -50,12 +50,19 @@ namespace YouTubeVideoDownload
 
         private void buttonPauseDownload_Click(object sender, RoutedEventArgs e)
         {
-
+            if (VideoList[0].Progress == ProgressToken.Ready)
+            {
+                VideoList[0].SetProgress(ProgressToken.Downloading);
+            }
+            else
+            {
+                VideoList[0].SetProgress(ProgressToken.Ready);
+            }
         }
 
         private void buttonStopDownload_Click(object sender, RoutedEventArgs e)
         {
-
+            var test = VideoList;
         }
 
         private async void DownloadFromVideoList()
