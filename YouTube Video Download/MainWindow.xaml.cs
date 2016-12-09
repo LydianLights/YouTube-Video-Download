@@ -45,20 +45,7 @@ namespace YouTubeVideoDownload
         #region Download Buttons
         private void buttonStartDownload_Click(object sender, RoutedEventArgs e)
         {
-            if (VideoList.Count > 0)
-            {
-                labelUrlStatus.Content = "Downloading...";
-                labelUrlStatus.Refresh();
-                VideoList[0].SetProgress(ProgressToken.Downloading);
-
-                VideoDownloader.SaveVideoToDiskAsync(VideoList[0].Video.ID);
-
-                labelUrlStatus.Content = "Done!";
-            }
-            else
-            {
-                labelUrlStatus.Content = "No videos to download!";
-            }
+            DownloadFromVideoList();
         }
 
         private void buttonPauseDownload_Click(object sender, RoutedEventArgs e)
@@ -69,6 +56,23 @@ namespace YouTubeVideoDownload
         private void buttonStopDownload_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private async void DownloadFromVideoList()
+        {
+            if (VideoList.Count > 0)
+            {
+                labelUrlStatus.Content = "Downloading...";
+                VideoList[0].SetProgress(ProgressToken.Downloading);
+
+                await VideoDownloader.SaveVideoToDiskAsync(VideoList[0].Video.ID);
+
+                labelUrlStatus.Content = "Done!";
+            }
+            else
+            {
+                labelUrlStatus.Content = "No videos to download!";
+            }
         }
         #endregion
 

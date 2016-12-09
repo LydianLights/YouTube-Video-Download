@@ -11,8 +11,9 @@ namespace YouTubeVideoDownload
 {
     public static class VideoDownloader
     {
+        // Saves the YouTube video specified by the provided video ID to disk at the path set by the user
         // TODO: Remove save path from this method and pass it in instead
-        private static async Task _SaveVideoToDiskAsync(string videoID)
+        public static async Task SaveVideoToDiskAsync(string videoID)
         {
             string savePath = Properties.Settings.Default.downloadPath;
 
@@ -31,18 +32,12 @@ namespace YouTubeVideoDownload
             File.Move(Path.Combine(downloadPath, video.FullName), Path.Combine(savePath, video.FullName));
         }
 
-        // Saves the YouTube video specified by the provided video ID to disk at the path set by the user
-        public static async void SaveVideoToDiskAsync(string videoID)
-        {
-            await _SaveVideoToDiskAsync(videoID);
-        }
-
         // Saves the YouTube videos specified by the provided video IDs to disk at the path set by the user
-        public static async void SaveVideosToDiskAsync(string[] videoIDs)
+        public static async Task SaveVideosToDiskAsync(string[] videoIDs)
         {
             foreach (var videoID in videoIDs)
             {
-                await _SaveVideoToDiskAsync(videoID);
+                await SaveVideoToDiskAsync(videoID);
             }
         }
     }
