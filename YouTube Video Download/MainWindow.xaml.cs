@@ -45,34 +45,32 @@ namespace YouTubeVideoDownload
         #region Download Buttons
         private void buttonStartDownload_Click(object sender, RoutedEventArgs e)
         {
-            DownloadFromVideoList();
+            DownloadAllFromVideoList();
         }
 
         private void buttonPauseDownload_Click(object sender, RoutedEventArgs e)
         {
-            if (VideoList[0].Progress == ProgressToken.Ready)
-            {
-                VideoList[0].SetProgress(ProgressToken.Downloading);
-            }
-            else
-            {
-                VideoList[0].SetProgress(ProgressToken.Ready);
-            }
+
         }
 
         private void buttonStopDownload_Click(object sender, RoutedEventArgs e)
         {
-            var test = VideoList;
+
         }
 
-        private async void DownloadFromVideoList()
+        private async void DownloadAllFromVideoList()
         {
             if (VideoList.Count > 0)
             {
-                labelUrlStatus.Content = "Downloading...";
-                VideoList[0].SetProgress(ProgressToken.Downloading);
+                foreach (var video in VideoList)
+                {
+                    labelUrlStatus.Content = "Downloading...";
+                    video.SetProgress(ProgressToken.Downloading);
 
-                await VideoDownloader.SaveVideoToDiskAsync(VideoList[0].Video.ID);
+                    await VideoDownloader.SaveVideoToDiskAsync(video.Video.ID);
+
+                    video.SetProgress(ProgressToken.Done);
+                }
 
                 labelUrlStatus.Content = "Done!";
             }
