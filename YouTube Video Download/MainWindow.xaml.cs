@@ -64,12 +64,25 @@ namespace YouTubeVideoDownload
             {
                 foreach (var video in VideoList)
                 {
+                    video.SetProgress(ProgressToken.Queued);
+                }
+
+                foreach (var video in VideoList)
+                {
                     labelUrlStatus.Content = "Downloading...";
                     video.SetProgress(ProgressToken.Downloading);
 
-                    await VideoDownloader.SaveVideoToDiskAsync(video.Video.ID);
+                    // TODO: Don't do this
+                    try
+                    {
+                        await VideoDownloader.SaveVideoToDiskAsync(video.Video.ID);
+                        video.SetProgress(ProgressToken.Done);
+                    }
+                    catch
+                    {
+                        video.SetProgress(ProgressToken.Error);
+                    }
 
-                    video.SetProgress(ProgressToken.Done);
                 }
 
                 labelUrlStatus.Content = "Done!";
