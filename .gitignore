@@ -11,7 +11,7 @@
 *.userprefs
 
 # Build results
-# [Dd]ebug/
+[Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
@@ -19,10 +19,9 @@
 [Xx]86/
 [Bb]uild/
 bld/
-# [Bb]in/
+[Bb]in/
 [Oo]bj/
 
-YouTubeAPI/bin/
 
 # Visual Studio 2015 cache/options directory
 .vs/
